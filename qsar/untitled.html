@@ -1,0 +1,300 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+   
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      
+      <base href="https://ochem.eu/">
+      
+      
+      <link rel="stylesheet" type="text/css" href="css/main.css?ver=2.3.5">
+      
+      <link rel="stylesheet" type="text/css" href="css/forms.css">
+      
+      <link rel="stylesheet" type="text/css" href="css/tablecloth.css">
+      
+      <link rel="stylesheet" type="text/css" href="css/itunes.css">
+      
+      <link rel="stylesheet" type="text/css" href="css/custom.css">
+      
+      <link rel="stylesheet" type="text/css" href="css/buttons.css">
+      
+      <link rel="stylesheet" type="text/css" href="css/smoothness/jquery-ui-1.10.3.custom.css">
+      
+      <link rel="stylesheet" type="text/css" href="js/lib/yahoo/reset/reset.css">
+      
+      <link rel="stylesheet" type="text/css" href="js/lib/yahoo/autocomplete/assets/skins/sam/autocomplete-skin.css">
+      
+      <link rel="stylesheet" type="text/css" href="js/lib/yahoo/fonts/fonts-min.css">
+      
+      <link rel="stylesheet" type="text/css" href="js/lib/yahoo/container/assets/skins/sam/container.css">
+      
+      <link rel="stylesheet" type="text/css" href="js/lib/yahoo/tabview/assets/skins/sam/tabview.css">
+      
+      <link rel="stylesheet" type="text/css" href="js/lib/yahoo/menu/assets/skins/sam/menu.css">
+      
+      <link rel="stylesheet" type="text/css" href="js/lib/yahoo/datatable/assets/skins/sam/datatable.css">
+      <script type="text/javascript" src="js/lib/yahoo/yahoo.ochem.custom.js">
+         <!----></script>
+      <script type="text/javascript" src="js/lib/jquery-1.8.2.min.js">
+         <!----></script>
+      <script type="text/javascript" src="js/lib/jquery-ui-1.10.3.custom.min.js">
+         <!----></script>
+      <script type="text/javascript" src="js/lib/jmvc/include.js">
+         <!----></script>
+      <script type="text/javascript" src="js/lib/xmljson.js">
+         <!----></script>
+      <script type="text/javascript" src="js/commons/midnighter.js?ver=1.8.10">
+         <!----></script>
+      <script type="text/javascript" src="js/commons/datasources.js">
+         <!----></script>
+      <script type="text/javascript" src="js/commons/autocomplete.js">
+         <!----></script>
+      <script type="text/javascript" src="js/commons/initialize.js">
+         <!----></script>
+      <script type="text/javascript" src="js/commons/pager.js?ver=2.3.5">
+         <!----></script>
+      <script type="text/javascript" src="js/commons/long-operation.js?ver=1.5.4">
+         <!----></script>
+      <script language="javascript">
+         <!---->
+			var webRoot = "https://ochem.eu/";
+			var currentUser = "tandean2";
+			var currentUserRank = 1.0 * "0";
+			var currentUserLimit = "10000";
+			var maximumTaskPriority = "1";
+			var isSuperUser = (currentUserRank >= 10);
+			var isModerator = ("true" == "");
+			var isMobile = false;
+			var unreadMessagesCount = '0' || 0;
+			</script>
+      <title>Online Chemical Modeling Environment</title>
+      
+   </head>
+   
+   <body class="yui-skin-sam qspr">
+      <iframe id="yui-history-iframe">
+         <!----></iframe>
+      <input id="yui-history-field" type="hidden">
+      
+      <table class="maintable" align="center" border="0" cellspacing="0" cellpadding="0">
+         
+         <tr>
+            
+            <td valign="center" background="img/bg-top.gif" height="70" align="left">
+               <img src="img/logo.gif">
+               
+            </td>
+            
+            <td class="top top-right" background="img/bg-top.gif" align="right" valign="top" style="padding-right: 10px; padding-top: 10px;">
+               
+               <div id="browser-version"></div>
+               											Welcome, Dear Mr.Tandean! 
+               											<a href="dialogue/dialogue.do" title="Check messages">
+                  <img src="img/icons/mail_icon.png">
+                  <b id="message-count"></b>
+                  </a>
+               <a href="user/profile.do?login=tandean2">My account</a>
+               <a href="login/logout.do?render-mode=redirect">Logout</a>
+               
+               <div style="position: absolute; right: 3px; top: 3px; font-size: 80%; color: #966;" title="The current version of the OCHEM">v.2.4.22
+                  
+               </div>
+               
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td colspan="2">
+               
+               <div id="yui-main">
+                  <div class="yui-b">
+                     <div id="mm" class="yuimenubar yuimenubarnav">
+                        <div class="bd">
+                           <div class="font-bar"><a href="javascript:changeFontSize(5);" title="Increase font size">A+</a><a href="javascript:changeFontSize(-5);" title="Decrease font size">a-</a></div>
+                           <ul class="first-of-type">
+                              <li class="yuimenubaritem first-of-type"><a class="yuimenubaritemlabel" href="home/show.do" target="">Home</a>
+                                 
+                                 <div id="mm_home" class="yuimenu">
+                                    <div class="bd">
+                                       <ul>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="home/show.do" target="">Home page</a></li>
+                                       </ul>
+                                       <ul>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://docs.ochem.eu/display/MAN" target="_blank">OCHEM Manual</a></li>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="mailto:ochem@vcclab.org" target="_blank">Request support</a></li>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="static/tutorials.do" target="">Tutorials and Use Cases</a></li>
+                                       </ul>
+                                       <ul>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="static/acknowledgements.do" target="">Acknowledgements</a></li>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="static/reference.do" target="">Citation</a></li>
+                                       </ul>
+                                       <ul>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="user/profile.do?login=tandean2" target=""><img src="img/icons/login.png">My account</a></li>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="dialogue/dialogue.do" target=""><img src="img/icons/mail_icon.png">Check messages</a></li>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="login/logout.do" target="">Logout</a></li>
+                                       </ul>
+                                    </div>
+                                 </div>
+                                 
+                              </li>
+                              <li class="yuimenubaritem first-of-type"><a class="yuimenubaritemlabel" href="#" target="">Database</a>
+                                 
+                                 <div id="mm_articles" class="yuimenu">
+                                    <div class="bd">
+                                       <ul>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="epbrowser/show.do?estimated=false&amp;fresh=1" target=""><b>Compound properties</b></a></li>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="molbrowser/show.do" target="">Molecules</a></li>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="properties/show.do" target="">Properties</a></li>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="properties/show.do?condition=true" target="">Conditions</a></li>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="unit/show.do" target="">Units</a></li>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="article/show.do" target="">Articles/Books</a></li>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="journal/show.do" target="">Journals</a></li>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="alerts/home.do" target="">ToxAlerts</a>
+                                             
+                                             <div id="mm_toxalerts" class="yuimenu">
+                                                <div class="bd">
+                                                   <ul>
+                                                      <li class="yuimenuitem"><a class="yuimenuitemlabel" href="alerts/home.do" target="">ToxAlerts home</a></li>
+                                                      <li class="yuimenuitem"><a class="yuimenuitemlabel" href="alerts/show.do" target="">View alerts</a></li>
+                                                      <li class="yuimenuitem"><a class="yuimenuitemlabel" href="alerts/screen.do" target="">Screen compounds against alerts</a></li>
+                                                      <li class="yuimenuitem"><a class="yuimenuitemlabel" href="alerts/upload.do" target="">Upload new alerts</a></li>
+                                                   </ul>
+                                                </div>
+                                             </div>
+                                             
+                                          </li>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="matchedpairs/transformations.do" target=""><img src="img/icons/mmp-16.png">MatchedPairs</a>
+                                             
+                                             <div id="mm_matchedpairs" class="yuimenu">
+                                                <div class="bd">
+                                                   <ul>
+                                                      <li class="yuimenuitem"><a class="yuimenuitemlabel" href="mmpoptimiser/show.do" target=""><img src="img/optimiser-16.png">Transformation-based Moloptimiser</a></li>
+                                                      <li class="yuimenuitem"><a class="yuimenuitemlabel" href="matchedpairs/transformations.do" target="">All molecular transformations</a></li>
+                                                   </ul>
+                                                </div>
+                                             </div>
+                                             
+                                          </li>
+                                       </ul>
+                                       <ul>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="basket/show.do" target="">Baskets</a></li>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="tags/show.do?type=molecule" target="">Tags</a></li>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="globalfilters/show.do" target="">Set area of interest...</a></li>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="history/showuser.do" target="">User-related changes</a></li>
+                                       </ul>
+                                       <ul>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="export/show.do" target="">My data exports</a></li>
+                                       </ul>
+                                       <ul>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="batchupload30/show.do" target=""><b>Batch data upload</b></a></li>
+                                       </ul>
+                                       <ul>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="epbrowser/show.do?trash=1" target=""><img src="img/icons/trash_small.gif">Trash</a></li>
+                                       </ul>
+                                    </div>
+                                 </div>
+                                 
+                              </li>
+                              <li class="yuimenubaritem first-of-type"><a class="yuimenubaritemlabel" href="#" target="">Models</a>
+                                 
+                                 <div id="mm_models" class="yuimenu">
+                                    <div class="bd">
+                                       <ul>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="modelconfigurator/choose.do" target=""><b>Create a model</b></a></li>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="model/select.do" target="">Apply a model</a></li>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="multiplemodels/create.do" target="">Create multiple models</a></li>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="predictor/show.do" target=""><b>Open predictor</b></a></li>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="modelupload/show.do" target="">Upload stub model</a></li>
+                                       </ul>
+                                       <ul>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="pendingtasks/tasks.do" target="">View pending tasks</a></li>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="pendingtasks/published.do" target=""><img src="img/icons/public.png">View published tasks</a></li>
+                                       </ul>
+                                       <ul>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="setcomparison/select.do" target="">SetCompare utility</a></li>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="mmpoptimiser/show.do" target=""><img src="img/optimiser-16.png">MolOptimiser</a></li>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="descriptorscalculator/show.do" target=""><img src="img/icons/mol-descriptors-16.png">Calculate descriptors</a></li>
+                                          <li class="yuimenuitem"><a class="yuimenuitemlabel" href="descriptorsstorage/show.do" target="">Descriptors storage</a></li>
+                                       </ul>
+                                    </div>
+                                 </div>
+                                 
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div><script language="javascript">
+			YAHOO.util.Event.onDOMReady(
+			function()
+			{
+		    	var oMenuBar = new YAHOO.widget.MenuBar("mm", { autosubmenudisplay: true, hidedelay: 750, lazyload: true });
+        		oMenuBar.render();
+        	}
+        	);
+		</script>
+               </td>
+            
+         </tr>
+         
+         <tr class="invisible">
+            
+            <td colspan="2" class="announcement"></td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td height="100%" class="content" valign="top" colspan="2">
+               
+               <div style="position: relative;" class="aaaa">
+                  
+                  <div id="main-tab-container" class="yui-navset main-tabs">
+                     
+                     <ul class="yui-nav invisible">
+                        
+                        <li class="selected">
+                           <a href="#maintab1">
+                              <em>undefined</em>
+                              </a>
+                           
+                        </li>
+                        
+                     </ul>
+                     
+                     <div class="yui-content">
+                        
+                        <div id="tab1">
+                           
+                           <div class="frame-status invisible">
+                              <span></span>
+                              <br>
+                              <img src="img/roller_transparent.gif">
+                              
+                           </div>
+                           <iframe frameborder="0" src="https://ochem.eu/molecule/profile.do?id=24739&amp;render-mode=popup">
+                              <!----></iframe>
+                           
+                        </div>
+                        
+                     </div>
+                     
+                  </div>
+                  
+               </div>
+               
+            </td>
+            
+         </tr>
+         
+      </table>
+      
+      <div id="bottom-aligner">ABC</div>
+      
+   </body>
+   
+</html>
