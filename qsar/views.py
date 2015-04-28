@@ -215,7 +215,7 @@ def pipeline_score1(n, x_train,y_train,x_test,y_test,x_out):
     return score, predict_out, pipe
 
 def score_test(request):
-    path = 'temp_smiles/test/result10.csv'
+    path = 'temp_smiles/test/result12.csv'
     df = pd.read_csv(path, sep=',')
     n = 1000
     df = df.iloc[:,1:n+1]
