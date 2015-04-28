@@ -54,11 +54,20 @@ def get_descriptor(request):
     return render_to_response('upload.html', {'form':form, 'score':score})
 
 def run_fda(request):
-    df = pd.read_csv('FDA drugs.txt', sep='\t')
-    data = df['NAME']
+    df = pd.read_csv('fda_list.txt', sep='\t')
+    data = df['name']
     data_list = [item for item in data]
-    path = get_smiles_list(data_list,'fda')
-    get_descriptors_list(path,'fda')
+    result = {}
+    count = 0
+    for i in data_list:
+        count += 1
+        print count
+        score = generate_smiles_descriptor_score(i)
+        result[i]=score
+        print score
+    j.dump(result,'result.pkl')
+    print result
+
     # print data_list
     # print'test'
     # result = Parallel(n_jobs=-1)(delayed(generate_smiles_descriptor_score(query) for query in data_list))
@@ -101,8 +110,8 @@ def get_descriptors_list(path, name):
 
 
 def generate_smiles_descriptor_score(query):
-    smiles = chemspider.get_compound_smiles_id(query)
-    if smiles == None:
+    smiles = chemspider.get_smiles(query)
+    if smiles == '<h1>Page not found (404)</h1>\n':
         return '404'
     result = generate_descriptor(smiles,query,1000)
     return {'result':result,'name':query}
@@ -117,23 +126,23 @@ def generate_descriptor(smiles,name,n):
         pass
     f = open(os.path.join(dir_path, filename), 'wb')
     # f = open(filename, 'w')
-
-    def clean(x):
-        # print 'x',x
-        if np.isnan(float(x)):
-            # print 'nan',x
-            return 0
-        elif np.isfinite(float(x))==False:
-            # print 'infinity',x
-            return 0
-        # elif (x.dtype.char in np.typecodes['AllFloat']):
-            # print 'yes'
-            # return 0
-        elif float(x)>np.finfo(np.float64).max:
-            # print 'yes'
-            return 1
-        else:
-            return float(x)
+# w
+#     def clean(x):
+#         # print 'x',x
+#         if np.isnan(float(x)):
+#             # print 'nan',x
+#             return 0
+#         elif np.isfinite(float(x))==False:
+#             # print 'infinity',x
+#             return 0
+#         # elif (x.dtype.char in np.typecodes['AllFloat']):
+#             # print 'yes'
+#             # return 0
+#         elif float(x)>np.finfo(np.float64).max:
+#             # print 'yes'
+#             return 1
+#         else:
+#             return float(x)
 
     f.write(smiles)
     f.close()
@@ -146,9 +155,9 @@ def generate_descriptor(smiles,name,n):
     # desc_file = open(path, 'r')
     df = pd.read_csv(path, sep=',')
     x_sample = df.iloc[:, 1:n+1]
-    x_sample = x_sample.applymap(clean)
+    x_sample = x_sample.apply(clean)
     # print x_sample
-    x_sample.applymap(clean)
+    x_sample.apply(clean)
     print 'applied again'
     clf = j.load('80d.pkl')
 
@@ -183,18 +192,17 @@ def generate_descriptor(smiles,name,n):
 def clean(x):
         # print 'x',x
         if np.isnan(float(x)):
-            print 'nan',x
             return 0
         elif np.isfinite(float(x))==False:
             # print 'infinity',x
-            print 'infinity'
-            return 0
+
+            return 10000000000000000000000000000000000000000000000
         # elif (x.dtype.char in np.typecodes['AllFloat']):
             # print 'yes'
             # return 0
         elif float(x)>10000000000000000000000000000000000000:
             # print 'yes'
-            return 1
+            return 1000000000000000000000000000000000000000
         else:
             return float(x)
 
@@ -207,26 +215,28 @@ def pipeline_score1(n, x_train,y_train,x_test,y_test,x_out):
     return score, predict_out, pipe
 
 def score_test(request):
-    path = 'temp_smiles/test/result.csv'
+    path = 'temp_smiles/test/result10.csv'
     df = pd.read_csv(path, sep=',')
     n = 1000
     df = df.iloc[:,1:n+1]
     df.fillna(0)
     df = df.applymap(clean)
-    print df.shape
-    print 'clean'
     rows_with_error = df.apply(
            lambda row : any([ e == '#NAME?' or np.isfinite(float(e))==False for e in row ]), axis=1)
 
-    print rows_with_error
     df = df[~rows_with_error]
-    print df.shape
     # df = df.applymap(clean)
     descriptors = load_and_clean('qsar/all data full descriptors.txt',15,n+15)
     x_train, x_test, y_train, y_test = split(descriptors, 0.3)
-    score, pred, pipe = pipeline_score1(80, x_train,y_train,x_test,y_test,df)
+    score, pred, pipe = pipeline_score1(110, x_train,y_train,x_test,y_test,df)
     # j.dump(pipe, '80d.pkl')
+    count = 0
+    for item in pred:
+        if int(item) == 1:
+            count +=1
     print score
+    print count
+    print 'total',len(pred)
     print pred
     print 'dumped'
 
