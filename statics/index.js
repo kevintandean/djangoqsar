@@ -11,6 +11,8 @@
 })(jQuery);
 
 var get_result = function(data){
+    $('.jumbotron').waiting({size:25, dotSize:15, light:true});
+
         console.log(data);
         $.ajax({
             url: "/result/",
@@ -20,6 +22,8 @@ var get_result = function(data){
             success: function (data) {
                 console.log(data)
                 $("#result_holder").html(data);
+                $('.jumbotron').waiting('done');
+
             }
         });
 }
