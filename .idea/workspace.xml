@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58511d59-3ee1-4a4e-8622-71e5e4ffd0ec" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/qsar/views.py" afterPath="$PROJECT_DIR$/qsar/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="qsarmodelling.iws" />
@@ -33,11 +33,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.0833335" vertical-offset="979" max-vertical-offset="1560">
-              <caret line="75" column="121" selection-start-line="75" selection-start-column="121" selection-end-line="75" selection-end-column="121" />
+            <state vertical-scroll-proportion="0.23433875" vertical-offset="949" max-vertical-offset="1560">
+              <caret line="70" column="29" selection-start-line="70" selection-start-column="29" selection-end-line="70" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -53,10 +53,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/qsar/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6754808" vertical-offset="754" max-vertical-offset="4335">
+            <state vertical-scroll-proportion="-10.807693" vertical-offset="754" max-vertical-offset="4335">
               <caret line="69" column="30" selection-start-line="69" selection-start-column="30" selection-end-line="69" selection-end-column="30" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
@@ -127,8 +127,8 @@
         <option value="$USER_HOME$/anaconda/lib/python2.7/site-packages/rdkit/Chem/Draw/spingCanvas.py" />
         <option value="$PROJECT_DIR$/templates/result.html" />
         <option value="$PROJECT_DIR$/statics/index.js" />
-        <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/qsar/views.py" />
+        <option value="$PROJECT_DIR$/templates/index.html" />
       </list>
     </option>
   </component>
@@ -626,7 +626,11 @@
       <created>1430290586319</created>
       <updated>1430290586319</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="-added 404">
+      <created>1430291753340</created>
+      <updated>1430291753340</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -639,7 +643,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16885246" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16885246" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3967742" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22940226" sideWeight="0.4026465" order="8" side_tool="true" content_ui="tabs" />
@@ -672,7 +676,8 @@
     <MESSAGE value="-somefix" />
     <MESSAGE value="-added simple user interface" />
     <MESSAGE value="-added loader" />
-    <option name="LAST_COMMIT_MESSAGE" value="-added loader" />
+    <MESSAGE value="-added 404" />
+    <option name="LAST_COMMIT_MESSAGE" value="-added 404" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1058,21 +1063,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.0833335" vertical-offset="979" max-vertical-offset="1560">
-          <caret line="75" column="121" selection-start-line="75" selection-start-column="121" selection-end-line="75" selection-end-column="121" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/qsar/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6754808" vertical-offset="754" max-vertical-offset="4335">
+        <state vertical-scroll-proportion="-10.807693" vertical-offset="754" max-vertical-offset="4335">
           <caret line="69" column="30" selection-start-line="69" selection-start-column="30" selection-end-line="69" selection-end-column="30" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23433875" vertical-offset="949" max-vertical-offset="1560">
+          <caret line="70" column="29" selection-start-line="70" selection-start-column="29" selection-end-line="70" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
