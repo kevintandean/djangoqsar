@@ -13,8 +13,8 @@ urlpatterns = [
     url(r'^test','qsar.views.score_test', name='test'),
     url(r'^getsmiles/(?P<name>\w+)','qsar.views.get_smiles',name='get_smiles'),
     url(r'^runfda','qsar.views.run_fda',name='run_fda'),
-
-
+    url(r'^result','qsar.views.get_result', name='get_result'),
 ]
 
-# urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

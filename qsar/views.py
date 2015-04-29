@@ -20,6 +20,7 @@ import chemspider
 import numpy as np
 import pandas as pd
 import requests, xmltodict
+import json
 
 
 class UploadFileForm(forms.Form):
@@ -51,7 +52,20 @@ def get_descriptor(request):
 
                 # data = Parallel(n_jobs=-1)(delayed(generate_smiles_descriptor)(query) for query in test_compound)
                 score = generate_smiles_descriptor_score(query)
-    return render_to_response('upload.html', {'form':form, 'score':score})
+            # return render_to_response('result.html', {'score':score})
+    return render_to_response('index.html', {'form':form, 'score':score})
+
+@csrf_exempt
+def get_result(request):
+    data = json.loads(request.body)
+    score = generate_smiles_descriptor_score(data)['result']
+    if score == 1.0:
+        score = 'Yes, it will'
+    elif score == 0.0:
+        score = "No, it won't"
+    else:
+        score = "404 NOT FOUND"
+    return render_to_response('result.html', {'score':score})
 
 def run_fda(request):
     df = pd.read_csv('fda_list.txt', sep='\t')
@@ -151,9 +165,13 @@ def generate_descriptor(smiles,name,n):
     # desc_file = open('temp_smiles/'+name+'/result.csv', 'r')
     # item1= desc_file.read()
     path = 'temp_smiles/'+name+'/result.csv'
-    subprocess.call(['java','-jar','qsar/PaDEL-Descriptor/PaDEL-Descriptor.jar','-2d','-3d','-convert3d','-fingerprints','-dir','temp_smiles/'+name+'/','-file','temp_smiles/'+name+'/result.csv'])
+    # subprocess.call(['java','-jar','qsar/PaDEL-Descriptor/PaDEL-Descriptor.jar','-2d','-3d','-convert3d','-fingerprints','-dir','temp_smiles/'+name+'/','-file','temp_smiles/'+name+'/result.csv'])
     # desc_file = open(path, 'r')
-    df = pd.read_csv(path, sep=',')
+    try:
+        df = pd.read_csv(path, sep=',')
+    except:
+        subprocess.call(['java','-jar','qsar/PaDEL-Descriptor/PaDEL-Descriptor.jar','-2d','-3d','-convert3d','-fingerprints','-dir','temp_smiles/'+name+'/','-file','temp_smiles/'+name+'/result.csv'])
+        df = pd.read_csv(path, sep=',')
     x_sample = df.iloc[:, 1:n+1]
     x_sample = x_sample.apply(clean)
     # print x_sample
@@ -215,7 +233,7 @@ def pipeline_score1(n, x_train,y_train,x_test,y_test,x_out):
     return score, predict_out, pipe
 
 def score_test(request):
-    path = 'temp_smiles/test/result12.csv'
+    path = 'qsar/alz/result.csv'
     df = pd.read_csv(path, sep=',')
     n = 1000
     df = df.iloc[:,1:n+1]
@@ -227,24 +245,20 @@ def score_test(request):
     df = df[~rows_with_error]
     # df = df.applymap(clean)
     descriptors = load_and_clean('qsar/all data full descriptors.txt',15,n+15)
-    x_train, x_test, y_train, y_test = split(descriptors, 0.3)
-    score, pred, pipe = pipeline_score1(110, x_train,y_train,x_test,y_test,df)
-    # j.dump(pipe, '80d.pkl')
+    # x_train, x_test, y_train, y_test = split(descriptors, 0.3)
+    # score, pred, pipe = pipeline_score1(110, x_train,y_train,x_test,y_test,df)
+    # clf = j.load('80d.pkl')
+    pred = clf.predict(df)
     count = 0
     for item in pred:
         if int(item) == 1:
             count +=1
-    print score
     print count
     print 'total',len(pred)
     print pred
     print 'dumped'
 
 
-
-    # clf = joblib.load('pipe.pkl')
-    # y_pred = clf.predict(df)
-    # print y_pred
 
 
             #

@@ -1,4 +1,6 @@
 import time
+import subprocess
+# from qsar.views import clean
 
 __author__ = 'kevintandean'
 import pandas as pd
@@ -250,11 +252,76 @@ def save_model(x_train,y_train, n):
 
 
 if __name__ == '__main__':
-    descriptors = load_and_clean('all data full descriptors.txt',15,2770)
-    x_train, x_test, y_train, y_test = split(descriptors, 0.3)
-    clf = joblib.load('pipe.pkl')
-    score = clf.score(x_test,y_test)
-    print score
+    def clean(x):
+        # print 'x',x
+        if np.isnan(float(x)):
+            return 0
+        elif np.isfinite(float(x))==False:
+            # print 'infinity',x
+
+            return 10000000000000000000000000000000000000000000000
+        # elif (x.dtype.char in np.typecodes['AllFloat']):
+            # print 'yes'
+            # return 0
+        elif float(x)>10000000000000000000000000000000000000:
+            # print 'yes'
+            return 1000000000000000000000000000000000000000
+        else:
+            return float(x)
+    def try_this():
+        # subprocess.call(['java','-jar','PaDEL-Descriptor/PaDEL-Descriptor.jar','-2d','-3d','-convert3d','-fingerprints','-dir','alz/','-file','alz/result.csv'])
+        df = pd.read_csv('alz/result.csv', sep=',')
+        x_sample = df.iloc[:, 1:1000+1]
+        x_sample = x_sample.apply(clean)
+        # print x_sample
+        x_sample.apply(clean)
+        print 'applied again'
+        clf = joblib.load('../80d.pkl')
+
+        y_pred = clf.predict(x_sample)
+        #
+        # clf = joblib.load('pipe.pkl')
+        y_pred = clf.predict(df)
+        print y_pred
+        count = 0
+        for item in y_pred:
+            if item == 1.0:
+                count+=1
+        print count
+
+    try_this()
+    # descriptors = load_and_clean('all data full descriptors.txt',15,2770)
+    # x_train, x_test, y_train, y_test = split(descriptors, 0.3)
+    # clf = ExtraTreesClassifier()
+    # clf.fit(x_train,y_train)
+    # importance = clf.feature_importances_
+    # max = np.amax(importance, keepdims=True)
+    # from rdkit.Chem import AllChem
+    # from rdkit.Chem import Draw
+    # f = open('fdasmiles1.smi', 'r')
+    # molecules = []
+    # for item in f.readlines():
+    #     mol = AllChem.MolFromSmiles(item)
+    #     if mol != None:
+    #         molecules.append(mol)
+    #
+    # img=Draw.MolsToGridImage(molecules[200:400],molsPerRow=15,subImgSize=(300,300))
+    # img.save('cdk2_molgrid1.png')
+    #
+    # smiles = "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
+    # mol = AllChem.MolFromSmiles(smiles)
+    #
+    # # technically this step isn't required since the drawing code
+    # # will automatically add a 2D conformation to a molecule that has
+    # # no conformation information, I'm including it to show how to
+    # # generate 2D coords with the RDKit:
+    # AllChem.Compute2DCoords(mol)
+    #
+    # Draw.MolToFile(mol,"caffeine.png",size=(200,200))
+
+    # clf = joblib.load('pipe.pkl')
+    # score = clf.score(x_test,y_test)
+    # print score
     # save_model(x_train,y_train,73)
     # result = common(100,x_train,y_train,x_test,y_test)
     # result = optimize_train(descriptors,[0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8])

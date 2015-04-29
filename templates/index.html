@@ -1,0 +1,98 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <style>
+        body {
+            background-color: transparent;
+        }
+
+        html {
+            background: url({% static "wallpaper.jpg" %}) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        div {
+            background-color: transparent
+        }
+        html, body, .container {
+            height: 100%;
+        }
+
+        .container {
+            display: table;
+            vertical-align: middle;
+        }
+
+        .vertical-center-row {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .btn-primary {
+  color: #fff;
+  background-color: #0D742A;
+  border-color: #2e6da4;
+}
+        #id_query{
+{#            padding: 10px, 16px;#}
+            font-size: 18px;
+            height: 46px;
+{#            padding-bottom: 2px;#}
+
+        }
+        #check{
+{#            margin-top:5px;#}
+{#            width:100%;#}
+            background-color:#0D742A;
+            cursor:pointer;
+            font-size:18px
+        }
+        .jumbotron {
+  background-color: rgba(228, 227, 174, 0.81);
+}
+    </style>
+
+</head>
+<body>
+<div class="container">
+    <div class="row vertical-center-row">
+        <div class="col-sm-3">
+
+        </div>
+        <div class="col-sm-6">
+            <div class="jumbotron">
+                <form class="form-group" onsubmit="return false;">
+                    <h2>Will it go to your brain?</h2>
+                    <div class="input-group">
+                    <input id="id_query" class="form-control" maxlength="100" name="query" type="text">
+                    <span class="input-group-addon btn btn-lg btn-primary" id="check">check</span>
+{#                    <input id='check' type="button" value="check" class="btn btn-primary btn-lg"/>#}
+                    </div>
+
+                </form>
+                <div id="result_holder">
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+{% load staticfiles %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="{% static "index.js" %}"></script>
+
+</body>
+</html>
