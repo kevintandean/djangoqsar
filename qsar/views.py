@@ -58,13 +58,16 @@ def get_descriptor(request):
 @csrf_exempt
 def get_result(request):
     data = json.loads(request.body)
-    score = generate_smiles_descriptor_score(data)['result']
+    try:
+        score = generate_smiles_descriptor_score(data)['result']
+    except:
+        score = "404 NOT FOUND"
+        return render_to_response('result.html', {'score':score})
+
     if score == 1.0:
         score = 'Yes, it will'
     elif score == 0.0:
         score = "No, it won't"
-    else:
-        score = "404 NOT FOUND"
     return render_to_response('result.html', {'score':score})
 
 def run_fda(request):
@@ -92,7 +95,6 @@ def run_fda(request):
 def get_smiles(request,name):
     smiles = chemspider.get_compound_smiles_id(name)
     if request == 0:
-        print smiles
         return smiles
     else:
         return HttpResponse(smiles)
@@ -126,6 +128,7 @@ def get_descriptors_list(path, name):
 def generate_smiles_descriptor_score(query):
     smiles = chemspider.get_smiles(query)
     if smiles == '<h1>Page not found (404)</h1>\n':
+        print'here'
         return '404'
     result = generate_descriptor(smiles,query,1000)
     return {'result':result,'name':query}
